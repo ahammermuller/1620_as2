@@ -5,3 +5,5 @@ const notes = [
     id: 1 
   }
 ]
+
+//accepting suggestions
