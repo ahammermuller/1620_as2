@@ -5,10 +5,6 @@ const notes = [
     id: 1 
   }
 ]
-
-const plusButton = document.querySelector(".fa-solid.fa-circle-plus")
-const noteArea = document.querySelector(".create-note-area")
-
 	
 // how the new textbox will looks like
 const newNotebox = `
@@ -21,54 +17,35 @@ const newNotebox = `
   </div>
 	`
 // Function to open a new text box
-  function newNote() {
-    const noteArea = document.querySelector(".create-note-area")
-    noteArea.insertAdjacentHTML("beforeend", newNotebox)
-  }
-  
+function newNote() {
+  const noteArea = document.querySelector(".create-note-area")
+  noteArea.insertAdjacentHTML("beforeend", newNotebox)
+  noteArea.addEventListener("click", SavecancelButtons)
+}
 
-// Function to add the note below notes in the left side of the page
-	function addNote() {
-    const notesList = document.querySelector(".notes-list")
-    const notesTitle = `<li>${notes.title}</li>`
-	  notesList.insertAdjacentHTML("beforeend", notesTitle)
-	}
-	
+// function to click plus button
+function clickPlusbutton (){
+  const plusButton = document.querySelector(".fa-solid.fa-circle-plus")
+  plusButton.addEventListener("click", newNote)
+}
 
-	function saveNote(textinput) {
-	  const splitText = textinput.split("\n")
-	  const title = splitText[0]
-	  const content = splitText.splice(1).join("\n")
-	
+// Function to add the new note below notes in the left side of the page
+function addNote() {
+  const notesList = document.querySelector(".notes-list")
+  const notesTitle = `<li>${notes.title}</li>`
+	notesList.insertAdjacentHTML("beforeend", notesTitle)
+}
 
-	  const noteObj = {
-	    title: title,
-	    content: content,
-	    id: notes[notes.length -1].id + 1
-	  }
-	  notes.push(noteObj)
-	
+function SavecancelButtons(event) {
+  const id = event.target.id
+  if (id === "cancel") {
+    document.querySelector(".new-note-area").remove()
+  } else if (id === "save") 
+    addNote(notes)  
+}
 
-	  addNote(noteObj)
-	  removeNewNoteArea()
-	}
-	
+clickPlusbutton()
 
-	function removeNewNoteArea() {
-	  document.querySelector(".new-note-area").remove()
-	}
-	
 
-	function createNoteAreaClick(event) {
-	  const id = event.target.id
-	  if (id === "cancel") {
-	    removeNewNoteArea()
-	  } else if (id === "save") {
-	    saveNote(document.querySelector(".new-note-area > textarea").value)
-	  }
-	}
-	
 
-	plusButton.addEventListener("click", newNote)
-	noteArea.addEventListener("click", createNoteAreaClick)
 	
