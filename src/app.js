@@ -8,9 +8,9 @@ const notes = [
 
 const plusButton = document.querySelector(".fa-solid.fa-circle-plus")
 const noteArea = document.querySelector(".create-note-area")
-const notesList = document.querySelector(".notes-list")
-	
 
+	
+// how the new textbox will looks like
 const newNotebox = `
   <div class="new-note-area">
     <textarea name="textarea" rows="10" cols="50"> </textarea>
@@ -20,18 +20,18 @@ const newNotebox = `
     </div>
   </div>
 	`
-
-  function addNote(event) {
-    if (document.querySelector(".new-note-area")) {
-      return
-    }
+// Function to open a new text box
+  function newNote() {
+    const noteArea = document.querySelector(".create-note-area")
     noteArea.insertAdjacentHTML("beforeend", newNotebox)
   }
+  
 
-
-
-	function addNoteToSide(note) {
-	  notesList.insertAdjacentHTML("beforeend", `<li>${note.title}</li>`)
+// Function to add the note below notes in the left side of the page
+	function addNote() {
+    const notesList = document.querySelector(".notes-list")
+    const notesTitle = `<li>${notes.title}</li>`
+	  notesList.insertAdjacentHTML("beforeend", notesTitle)
 	}
 	
 
@@ -49,7 +49,7 @@ const newNotebox = `
 	  notes.push(noteObj)
 	
 
-	  addNoteToSide(noteObj)
+	  addNote(noteObj)
 	  removeNewNoteArea()
 	}
 	
@@ -69,9 +69,6 @@ const newNotebox = `
 	}
 	
 
-	plusButton.addEventListener("click", addNote)
+	plusButton.addEventListener("click", newNote)
 	noteArea.addEventListener("click", createNoteAreaClick)
 	
-
-	// This is to insert the example note
-	addNoteToSide(notes[0])
