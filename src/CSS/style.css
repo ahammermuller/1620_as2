@@ -48,11 +48,14 @@
 }
 
 .side-nav span {
-  color: var(--text);
+  color: var(--muted);
+
 }
 
 .side-nav span p {
   font-size: var(--lrg-txt);
+  color: var(--not-blue);
+  font-weight: bold;
 }
 
 .main {
