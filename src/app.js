@@ -24,14 +24,35 @@ function newNote() {
 
 // Function to click save and cancel buttons
 function saveCancelbuttons(event) {
+  const newNotearea = document.querySelector(".new-note-area")
   const id = event.target.id
   if (id === "cancel") {
-    clearNotesArea()
+    newNotearea.remove()
   } else if (id === "save") {
     const newTextarea = document.querySelector(".new-note-area > textarea").value
     clickSave(newTextarea)
+    newNotearea.remove()
   }
 }
+
+// Function to push the notes to a list after click the save button 
+function clickSave(textinput) {
+  const splitInput = textinput.split("\n")
+
+  const notes = {
+    title: splitInput[0],
+    noteBody: splitInput.slice(1).join("\n"),
+    id: newText.length + 1
+  }
+  newText.push(notes)
+
+  addNote(notes)
+}
+
+function clearNotesArea() {
+  document.querySelector(".note-view")?.remove()
+}
+
 
 // Function to add the new note below notes in the left side of the page
 function addNote(note) {
@@ -45,54 +66,11 @@ function addNote(note) {
 
 
 
-
-
-
-
-
-
-
-
-const notes = []
-
-
-function clickSave(textinput) {
-  if (textinput.length < 1) {
-    return
-  }
-  const splitText = textinput.split("\n")
-  const title = splitText[0]
-  const content = splitText.splice(1).join("\n")
-
-  const noteObj = {
-    title: title,
-    noteBody: content,
-    id: notes.length + 1
-  }
-  notes.push(noteObj)
-
-  addNote(noteObj)
-  clearNotesArea()
-}
-
-function clearNotesArea() {
-  document.querySelector(".new-note-area")?.remove()
-  document.querySelector(".note-view")?.remove()
-}
-
-function canCreateNotesArea() {
-  return !(document.querySelector(".new-note-area") || document.querySelector(".note-view"))
-}
-
-
+const newText = []
 
 function callBackNotes(event) {
-  if (!canCreateNotesArea()) {
-    return
-  }
-
   const id = event.target.dataset.id
-  const note = notes[id - 1]
+  const note = newText[id - 1]
   if (note) {
     const noteDisplay = `
     <div class="note-view">
@@ -103,6 +81,7 @@ function callBackNotes(event) {
       </div>
     </div>
     `
+
     const readNoteArea = document.querySelector(".read-note-area")
     readNoteArea.insertAdjacentHTML("beforeend", noteDisplay)
     readNoteArea.querySelector(".fa-solid.fa-times-circle").addEventListener("click", clearNotesArea)
