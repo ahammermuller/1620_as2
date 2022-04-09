@@ -110,6 +110,45 @@ article {
   font-size: 1.6rem;
 }
 
+.new-note-area textarea{
+  background: var(--drk-white);
+  font-size: 12px;
+  font-family: 'Libre Baskerville', serif
+}
+
+.new-note-area button#save, button#cancel{
+  font-size: 14px;
+  font-family: 'Libre Baskerville', serif
+}
+
+.new-note-area button#save{
+  transition-duration: 0.4s;
+  border: 2px solid;
+  background-color: var(--not-white); 
+  color: var(--not-green); 
+  padding: 3px;
+  border-radius: 4px;
+}
+
+.new-note-area button#save:hover{
+  background-color: var(--not-green);
+  color: var(--not-white);
+}
+
+.new-note-area button#cancel{
+  transition-duration: 0.4s;
+  border: 2px solid;
+  background-color: var(--not-white); 
+  color: var(--not-red); 
+  padding: 3px;
+  border-radius: 4px;
+}
+
+.new-note-area button#cancel:hover{
+  background-color: var(--not-red);
+  color: var(--not-white);
+}
+
 i {
   font-size: 3rem;
 }
@@ -125,6 +164,16 @@ textarea {
   outline: none;
   resize: none;
   overflow: auto;
+}
+
+li.noteTitle{
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+li.noteTitle:hover{
+  color: var(--not-blue);
 }
 
 footer {

@@ -9,7 +9,7 @@ function clickPlusbutton (){
 function newNote() {
   const noteBox = `
   <div class="new-note-area">
-    <textarea name="textarea" rows="10" cols="50"> </textarea>
+    <textarea name="textarea" rows="15" cols="80" > </textarea>
     <div>
       <button id="save">Save</button>
       <button id="cancel">Cancel</button>
