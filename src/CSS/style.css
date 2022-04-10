@@ -11,15 +11,23 @@
   --lrg-txt:   2.2rem;
 }
 
-.light-theme {
+body {
   --bg-color: var(--not-white);
-  --bg-side:  var(--drk-white);
-  --text:     var(--not-black);
+  --text: var(--not-black);
+  --bg-side: var(--drk-white);
 }
 
-/* .dark-theme { */
-/*   --bg-color: var(--not-grey); */
-/* } */
+body.light-theme {
+  --bg-color: var(--not-white);
+  --text: var(--not-black);
+  --bg-side: var(--drk-white);
+}
+
+body.dark-theme {
+  --bg-color: var(--not-grey);
+  --bg-side: var(--muted);
+  --text: var(--not-white);
+}
 
 * {
   margin: 0;
@@ -37,7 +45,7 @@
 .side-note-menu {
   height: 100%;
   width: 20rem;
-  background-color: var(--bg-side);
+  background-color: var(--bg-side)
 }
 
 .side-nav {
@@ -54,7 +62,7 @@
 
 .side-nav span p {
   font-size: var(--lrg-txt);
-  color: var(--not-blue);
+  color: var(--text);
   font-weight: bold;
 }
 
@@ -90,6 +98,34 @@ header a {
   font-size: 1.5rem;
 }
 
+input[type="checkbox"]{
+  position: relative;
+  width: 40px;
+  height: 20px;
+  -webkit-appearance: none;
+  background: var(--not-grey);
+  outline: none;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+input:checked[type="checkbox"]{
+  background: var(--not-white) ;
+}
+
+input[type="checkbox"]::before{
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--not-red);
+  border-radius: 20px;
+}
+
+input:checked[type="checkbox"]::before{
+  left: 20px;
+}
+
 .note-container-main {
   display: flex;
   flex-grow: 1;
@@ -114,20 +150,21 @@ article {
 .read-note-area h1{
   font-family: 'Libre Baskerville', serif;
   font-weight: bold;
-  color: var(--not-grey);
+  color: var(--text);
   font-size: 1.4rem;
   padding-top: 10px;
 }
 
 .new-note-area textarea{
-  background: var(--drk-white);
+  background: var(--bg-side);
   font-size: 12px;
-  font-family: 'Libre Baskerville', serif
+  color: var(--text);
+  font-family: 'Libre Baskerville', serif;
 }
 
 .new-note-area button#save, button#cancel{
   font-size: 14px;
-  font-family: 'Libre Baskerville', serif
+  font-family: 'Libre Baskerville', serif;
 }
 
 .new-note-area button#save{
@@ -166,6 +203,10 @@ i {
   color: var(--text);
 }
 
+i.fa-regular.fa-times-circle{
+  padding-top: 10px;
+}
+
 textarea {
   caret-color: var(--not-red);
   border: none;
@@ -179,10 +220,11 @@ li.noteTitle{
   font-size: 14px;
   font-weight: bold;
   padding-top: 10px;
+  color: var(--text);
 }
 
 li.noteTitle:hover{
-  color: var(--not-blue);
+  color: var(--text);
 }
 
 footer {

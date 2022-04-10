@@ -9,7 +9,7 @@ function clickPlusbutton (){
 function newNote() {
   const noteBox = `
   <div class="new-note-area">
-    <textarea name="textarea" rows="15" cols="80" > </textarea>
+    <textarea name="textarea" rows="15" cols="80"> </textarea>
     <div>
       <button id="save">Save</button>
       <button id="cancel">Cancel</button>
@@ -54,9 +54,9 @@ function addNote(note) {
   notesList.addEventListener("click", readNotes)
 }
 
-
 const newText = []
 
+// Function to read the notes
 function readNotes(evt) {
   const readNoteArea = document.querySelector(".read-note-area")
   const note = newText[evt.target.dataset.id - 1]
@@ -68,13 +68,33 @@ function readNotes(evt) {
         <p>${note.noteBody}</p>
       </div>
     </div>
-    `
-    readNoteArea.insertAdjacentHTML("beforeend", noteRead)
-    readNoteArea.querySelector(".fa-regular.fa-times-circle")
-    readNoteArea.addEventListener("click", (evt) => {
-    readNoteArea.remove()
-    })
+  `
+      readNoteArea.insertAdjacentHTML("beforeend", noteRead)
+      readNoteArea.querySelector(".fa-regular.fa-times-circle")
+      readNoteArea.addEventListener("click", (evt) => {
+      readNoteArea.remove()
+      })
 }
 
 clickPlusbutton()
 	
+
+function toggleCheck(){
+  const toggle = document.querySelector('.theme-toggle');
+  const body = document.body;
+
+  toggle.addEventListener('input', e => {
+    const isChecked = e.target.checked;
+
+    if (isChecked) {
+        body.classList.add('dark-theme');
+//        body.classList.add('light-theme')
+    } else {
+//        body.classList.remove('light-theme')
+        body.classList.remove('dark-theme');
+        
+    }
+  })
+}
+
+toggleCheck()
