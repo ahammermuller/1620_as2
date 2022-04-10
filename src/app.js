@@ -78,7 +78,7 @@ function readNotes(evt) {
 
 clickPlusbutton()
 	
-
+// Function to toggle between dark mode and light mode
 function toggleCheck(){
   const toggle = document.querySelector('.theme-toggle');
   const body = document.body;
@@ -88,9 +88,7 @@ function toggleCheck(){
 
     if (isChecked) {
         body.classList.add('dark-theme');
-//        body.classList.add('light-theme')
     } else {
-//        body.classList.remove('light-theme')
         body.classList.remove('dark-theme');
         
     }
